@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Basic Tracker</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      text-align: center;
+      margin-top: 100px;
+      background-color: #f4f4f4;
+    }
+    #status {
+      font-size: 24px;
+      margin-top: 20px;
+    }
+    #coords {
+      font-size: 20px;
+      margin-top: 10px;
+      color: #555;
+    }
+  </style>
+</head>
+<body>
+  <h1>Movement Tracker</h1>
+  <div id="status">Mouse is inside the window</div>
+  <div id="coords">X: 0, Y: 0</div>
+
+  <script>
+    const status = document.getElementById('status');
+    const coords = document.getElementById('coords');
+
+    // Mouse move tracking
+    window.addEventListener('mousemove', (e) => {
+      coords.textContent = `X: ${e.clientX}, Y: ${e.clientY}`;
+    });
+
+    // mouse leave
+    window.addEventListener('mouseout', (e) => {
+      if (!e.relatedTarget && !e.toElement) {
+        status.textContent = 'Mouse left the window';
+        status.style.color = 'red';
+      }
+    });
+
+    // mouse enter
+    window.addEventListener('mouseover', (e) => {
+      status.textContent = 'Mouse is inside the window';
+      status.style.color = 'green';
+    });
+  </script>
+</body>
+</html>
+
+
